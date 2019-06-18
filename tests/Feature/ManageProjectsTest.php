@@ -13,7 +13,7 @@ class ManageProjectsTest extends TestCase
     use  WithFaker,RefreshDatabase;
 
     /** @test */
-    public function guests_cannot_manage_projects()
+    function guests_cannot_manage_projects()
     {
         $project = factory('App\Project')->create();
 
@@ -25,7 +25,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_create_a_project()
+    function a_user_can_create_a_project()
     {
         $this->signIn();
 
@@ -50,7 +50,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_update_a_project()
+    function a_user_can_update_a_project()
     {
         $project = ProjectFactory::create();
 
@@ -64,7 +64,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_update_a_projects_general_notes()
+    function a_user_can_update_a_projects_general_notes()
     {
         $project = ProjectFactory::create();
 
@@ -75,7 +75,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_view_a_their_project()
+    function a_user_can_view_a_their_project()
     {
         $project = ProjectFactory::create();
 
@@ -86,7 +86,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_authenticated_user_cannot_view_the_projects_of_others()
+    function a_authenticated_user_cannot_view_the_projects_of_others()
     {
         $this->signIn();
 
@@ -96,7 +96,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_authenticated_user_cannot_update_the_projects_of_others()
+    function a_authenticated_user_cannot_update_the_projects_of_others()
     {
         $this->signIn();
 
@@ -106,7 +106,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_project_requires_a_title()
+    function a_project_requires_a_title()
     {
         $this->signIn();
 
@@ -116,7 +116,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_project_requires_a_description()
+    function a_project_requires_a_description()
     {
         $this->signIn();
 
