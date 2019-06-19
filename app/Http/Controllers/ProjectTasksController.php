@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class ProjectTasksController extends Controller
 {
+    /**
+     * Add a task to the given project.
+     *
+     * @param  Project $project
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function store(Project $project)
     {
         $this->authorize('update', $project);
@@ -19,6 +26,14 @@ class ProjectTasksController extends Controller
         return redirect($project->path());
     }
 
+    /**
+     * Update the project
+     *
+     * @param  Project $project
+     * @param  Task    $task
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function update(Project $project, Task $task)
     {
         $this->authorize('update', $task->project);
