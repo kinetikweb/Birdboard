@@ -32,7 +32,7 @@ class Project extends Model
      */
     public function owner()
     {
-      return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -42,7 +42,7 @@ class Project extends Model
      */
     public function tasks()
     {
-      return $this->hasMany(Task::class);
+        return $this->hasMany(Task::class);
     }
 
     /**
@@ -64,5 +64,25 @@ class Project extends Model
     public function activity()
     {
         return $this->hasMany(Activity::class)->latest();
+    }
+
+    /**
+     * Invite a user to the project.
+     *
+     * @param  User $user
+     */
+    public function invite(User $user)
+    {
+        $this->members()->attach($user);
+    }
+
+    /**
+     * Get all members that are assigned to the team.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function members()
+    {
+        return $this->belongsToMany(User::class, 'project_members');
     }
 }
